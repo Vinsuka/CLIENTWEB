@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Placeholder Generator - Topcon Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0C97D0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .placeholder {
+            background: #0C97D0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .instructions {
+            background: #F6F8FA;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .image-list {
+            list-style: none;
+            padding: 0;
+        }
+        .image-list li {
+            background: #E6EEF6;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Topcon Website - Image Placeholders</h1>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <p>This page generates placeholder images for the Topcon website. Copy the generated images and save them in the appropriate folders.</p>
+        </div>
+
+        <h3>Required Images:</h3>
+        <ul class="image-list">
+            <li>assets/images/Logotopcon.png (Company Logo)</li>
+            <li>assets/images/hero-technicians.jpg (Hero Image)</li>
+            <li>assets/images/clients/huawei.png</li>
+            <li>assets/images/clients/hutchison.png</li>
+            <li>assets/images/clients/mobitel.png</li>
+            <li>assets/images/clients/dialog.png</li>
+            <li>assets/images/clients/zte.png</li>
+            <li>assets/images/clients/airtel.png</li>
+            <li>assets/images/projects/hutchison-cabin.jpg</li>
+            <li>assets/images/projects/huawei-mega.jpg</li>
+            <li>assets/images/projects/dialog-airtel-merge.jpg</li>
+        </ul>
+
+        <h3>Placeholder Images:</h3>
+        
+        <h4>Logo (50x50px):</h4>
+        <div class="placeholder" style="width: 50px; height: 50px; margin: 0 auto;">LOGO</div>
+        
+        <h4>Hero Image (600x400px):</h4>
+        <div class="placeholder" style="width: 600px; height: 400px; margin: 0 auto;">HERO IMAGE</div>
+        
+        <h4>Client Logos (120x60px each):</h4>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div class="placeholder" style="width: 120px; height: 60px;">HUAWEI</div>
+            <div class="placeholder" style="width: 120px; height: 60px;">HUTCHISON</div>
+            <div class="placeholder" style="width: 120px; height: 60px;">MOBITEL</div>
+            <div class="placeholder" style="width: 120px; height: 60px;">DIALOG</div>
+            <div class="placeholder" style="width: 120px; height: 60px;">ZTE</div>
+            <div class="placeholder" style="width: 120px; height: 60px;">AIRTEL</div>
+        </div>
+        
+        <h4>Project Images (350x200px each):</h4>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div class="placeholder" style="width: 350px; height: 200px;">HUTCHISON CABIN</div>
+            <div class="placeholder" style="width: 350px; height: 200px;">HUAWEI MEGA</div>
+            <div class="placeholder" style="width: 350px; height: 200px;">DIALOG-AIRTEL</div>
+        </div>
+
+        <div class="instructions">
+            <h3>Next Steps:</h3>
+            <ol>
+                <li>Replace the placeholder images with actual company images</li>
+                <li>Ensure all images are optimized for web (WebP format recommended)</li>
+                <li>Add proper alt text for accessibility</li>
+                <li>Test the website on different devices and browsers</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Generate download links for placeholder images
+        function generatePlaceholderImage(text, width, height, filename) {
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#0C97D0';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, width/2, height/2);
+            
+            // Convert to blob and create download link
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.textContent = `Download ${filename}`;
+                a.style.display = 'block';
+                a.style.margin = '5px 0';
+                a.style.padding = '10px';
+                a.style.background = '#E6EEF6';
+                a.style.borderRadius = '4px';
+                a.style.textDecoration = 'none';
+                a.style.color = '#0B2540';
+                document.body.appendChild(a);
+            });
+        }
+
+        // Generate placeholder images
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            
+            // Add download section
+            const downloadSection = document.createElement('div');
+            downloadSection.innerHTML = '<h3>Download Placeholder Images:</h3>';
+            container.appendChild(downloadSection);
+            
+            // Generate images
+            generatePlaceholderImage('TOPCON LOGO', 50, 50, 'Logotopcon.png');
+            generatePlaceholderImage('HERO IMAGE', 600, 400, 'hero-technicians.jpg');
+            generatePlaceholderImage('HUAWEI', 120, 60, 'huawei.png');
+            generatePlaceholderImage('HUTCHISON', 120, 60, 'hutchison.png');
+            generatePlaceholderImage('MOBITEL', 120, 60, 'mobitel.png');
+            generatePlaceholderImage('DIALOG', 120, 60, 'dialog.png');
+            generatePlaceholderImage('ZTE', 120, 60, 'zte.png');
+            generatePlaceholderImage('AIRTEL', 120, 60, 'airtel.png');
+            generatePlaceholderImage('HUTCHISON CABIN', 350, 200, 'hutchison-cabin.jpg');
+            generatePlaceholderImage('HUAWEI MEGA', 350, 200, 'huawei-mega.jpg');
+            generatePlaceholderImage('DIALOG-AIRTEL', 350, 200, 'dialog-airtel-merge.jpg');
+        });
+    </script>
+</body>
+</html>
