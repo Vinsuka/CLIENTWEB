@@ -1,0 +1,604 @@
+Delivered-To: chaminda.rmv@gmail.com
+Received: by 2002:a05:6638:450c:b0:508:bc81:6ade with SMTP id bs12csp591668jab;
+        Wed, 13 Aug 2025 19:30:48 -0700 (PDT)
+X-Received: by 2002:a5d:5f53:0:b0:3b9:1443:aba with SMTP id ffacd0b85a97d-3b9e4159f7fmr1045623f8f.9.1755138648538;
+        Wed, 13 Aug 2025 19:30:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1755138648; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AtMX6Sq65gYyyDeXbju3jwqG5tAuX4fPpIdjsm1r4WakO/TcghE/f25TQdSfZxGQEZ
+         q/N4UBRnUqwUdr0Z7Xa7p2tESe/A/5gN4NOZsmpO6/AtHcKDDE1ZkYBKIAkZX/caNk7w
+         OXYsIrltTPnUQY4/i6eWaSnuDoS6Ip9iaVekmkTdydp8Q7zW0c71HOxOZvRtRPetfwhF
+         DgYKF6XU1dFdGUa3wKbTMM/D+tpZ4ukaiGV6HrjZS68HV/GUhkqX32+C5cGzpUZbjooz
+         Zu7srZaR6ytrWA6xThxfWFmDkBcoxMqCOI/3F7f9BXq+Rm/xkcAI7KhUNJXj5WbGQyb7
+         toAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=A9nJ/9sxCjY9sHUnCQZhPXn3kx2rAf0H7TL4aEhIbO0=;
+        fh=0u4CynGDXmHwCDKTheN5ARUnYcmzvXMtBcNkSMmPk3c=;
+        b=g2auiK+VsKIJw9iTI+iFTlrt/dCCQck+FIGxfho+a69faGLXiMnuPPI6aNzgeQJe9R
+         E7eA/Jk2CNSjSUrI4D+pBAGjkR8d7SjcWsaBj9Qtlao4f0QBaK5lFrCFFRc2RMjq8216
+         iwjEDS8k+tzxeJBXffYmGR4MC46CEOooYbJ80NSNTAKI4csg6C0KhkerpbqJz5cdLvWF
+         cpJzLqs2isYW/0UFOqDY5jqOAxY+hTL4ePg1tLyHmqoAjuCnO9gQPVkGtPjGEEZOhA9P
+         QsBoGCKvh2Ue7F14ksEmWuorU65oyjVEjJleuLkfuKAOH/xEtZLaxfAjcjAJBhMeESR2
+         dbJg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@simplebooks-com.20230601.gappssmtp.com header.s=20230601 header.b=v708GmR9;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of secretaryteam@simplebooks.com) smtp.mailfrom=secretaryteam@simplebooks.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <secretaryteam@simplebooks.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-3b915eb65afsor1047493f8f.7.2025.08.13.19.30.48
+        for <chaminda.rmv@gmail.com>
+        (Google Transport Security);
+        Wed, 13 Aug 2025 19:30:48 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of secretaryteam@simplebooks.com) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@simplebooks-com.20230601.gappssmtp.com header.s=20230601 header.b=v708GmR9;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of secretaryteam@simplebooks.com) smtp.mailfrom=secretaryteam@simplebooks.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=simplebooks-com.20230601.gappssmtp.com; s=20230601; t=1755138648; x=1755743448; dara=google.com;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=A9nJ/9sxCjY9sHUnCQZhPXn3kx2rAf0H7TL4aEhIbO0=;
+        b=v708GmR9naoGSpuHd+QFZ2I7n/wspuYjn23cJcArutCLaU/q8QDKx+JPDsyn4p0D9a
+         M6xDEj+elJ04XY4ua1aqIh1AdCoRcHXvnS3eNovKSY9dpIaSBGLe6ZXlaNz+KUsRZqZ0
+         2DLWWk1xvxRjKJjEaNFQiRxkc/NSi0aJqr8yz+AcnLdOcGa6fYBqGMzVxUmGKjWqMjQe
+         XNdrb7dQg/RXxZdWuoLGSJIF4lzZrq1KFh83ILClKYhNrZ7Lzg+LE5pJAehVp3gJVyCo
+         cotgapmZRQXBGSm7n++ETwSqtbrJmbf1fttuuozThkqwyAqWT90toERXGFRdjyyUxhKX
+         ZPzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755138648; x=1755743448;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=A9nJ/9sxCjY9sHUnCQZhPXn3kx2rAf0H7TL4aEhIbO0=;
+        b=PF1+DT4zSxEeZ8r8a8U5lVdHoFnAlfn7AfFniJhALkeSBnzGpGlN+ZCiCVty8rhl6W
+         NVpFHdCKkkYJVM6sVOqNB/xzOVx4mUKOEYD+LUmneaEDzFs+hsjIo9ZvKjZYWGmqimHL
+         FqoYiII/mT4hSlWKQmT6leFMAB0MIgabXg9ezqYFyckppOifKIG19UJZSSTPl2D6I/VB
+         GmC/8Wg36DOteQbVRV3xN7locPtIDxspO+wJGiTccZuOa35M6V1sJdei7zd+ZQ4QyAKc
+         5UTClO2cqivkmMOYS6uo/h7kIlvgQugHaw6HnJU7fmyVHJACgKCOH0GwGT0zifB3ktyA
+         +56A==
+X-Gm-Message-State: AOJu0YxLFmkUm6NiWMg8vOuFbgntmoQf8FTIM2s5wuQUOEKGBcZiR8Oj
+	xITFXNoORgfg7yhZ37DQvk0smGQGfNFbt2sjmBkmgbOGKY1vRjMptA83/q9i1d6bpdmFB6ItKnK
+	Zb0e6pvLFGLvR/+grxED6ROzKObCVBdDoVbSxRxi7xiWwz7h/lg3iy/c=
+X-Gm-Gg: ASbGncvEUb12EdQAzMK752KGk0e0KjEFtuVuSFI1MjLN1/dSv+mnV8XOYdAxQ1VFpRI
+	0Uy/h1PfcRPBlrB/PQiyW9BrGZp0fl0GJV/c4KDnlm9GBJrMf6RqnmY7J/ab3AdCoWU7+XGOzj7
+	7sQi26nYSD5BKHSktEk+02Qy894GCa6mFGjMULM/Sp/FTgc3TH4aIlCnd3iz9msDGZ0AxU4AFhB
+	2kNfDv7
+X-Google-Smtp-Source: AGHT+IGrEBKegXCTjxbYqDs0uJHhL+W0wVhUOogGPzT5P6VpciuC/odg+za4Wre4Po7AJK3J3/gdPuZ73Pc3ttwNeZc=
+X-Received: by 2002:a05:6000:2407:b0:3a4:f72a:b18a with SMTP id
+ ffacd0b85a97d-3b9e419288cmr1100541f8f.26.1755138647570; Wed, 13 Aug 2025
+ 19:30:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <CADBQ1WxKkxYQZDoR2U=qJGvnhQ7R1bK=6q0Ybq-zFQPVENw1eg@mail.gmail.com>
+ <CAN-3egwYHfU5jcMVRoLx9Jm1peaD6zSeHqceMP2ZC_i0DBbCWA@mail.gmail.com>
+In-Reply-To: <CAN-3egwYHfU5jcMVRoLx9Jm1peaD6zSeHqceMP2ZC_i0DBbCWA@mail.gmail.com>
+From: Secretary Team from Simplebooks <secretaryteam@simplebooks.com>
+Date: Thu, 14 Aug 2025 08:00:00 +0530
+X-Gm-Features: Ac12FXzbkD8Afplau5Ivt67U4xrkIBZHYVQsjswLbkfdAk8h-zUUF4dV5PxjUIA
+Message-ID: <CADKWgKfrkAm1YwN0-kmzssWHmopX4bzv2edWfnsSxDngHZK0DA@mail.gmail.com>
+Subject: Re: Request for Guidance on Closing SARUBIMA ENTERPRISE (PRIVATE) LIMITED
+To: Chaminda Jeewandara <chaminda.rmv@gmail.com>
+Cc: Team Annual Return from Simplebooks <annualreturns@simplebooks.com>, 
+	Mausim from simplebooks <mausim@simplebooks.com>, 
+	Operations Team Simplebooks <operations@simplebooks.com>
+Content-Type: multipart/alternative; boundary="0000000000009ece7b063c4a0ff6"
+
+--0000000000009ece7b063c4a0ff6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Sir/Madam,
+
+We hope this email finds you well.
+
+We would like to bring to your kind attention the recent developments
+regarding the Company close-down procedure, as stipulated by the Registrar
+of Companies. In light of these changes, we want to provide you with a
+clear understanding of the necessary steps to proceed with
+the Company closure process:
+
+The company closure process offers two viable routes - strike off and
+liquidation. We, *at SimpleBooks, recommend and offer the strike-off option
+for your company, provided that there are no assets or liabilities present*=
+.
+To initiate this process, the ROC will conduct an inspection of relevant
+documents to confirm that your company's assets and liabilities stand at
+zero. They will also verify the operational status of your company.
+
+   - *Required Documents:* To proceed with striking off your Company,
+   specific proof documents must be submitted to the ROC, along with the
+   relevant resolutions:
+
+
+   - Financial statements, certified by the Company Auditors.
+
+*or in its absence*,
+
+
+   - A "No Operation" letter and a "Confirmation of Assets and Liabilities"
+   letter, also certified by your Company Auditors.
+
+(Please note that the ROC may request additional documents, if deemed
+necessary, during the closure process.)
+
+
+   - *ROC Review*: Upon submission of the relevant resolutions and proof
+   documents, the ROC will thoroughly review and assess the documents. If a=
+ll
+   requested documents have been correctly submitted, the ROC will grant
+   permission for your company to proceed with the strike-off option.
+
+
+   - *Liquidation Consideration:* In the event the requested proof
+   documents are not provided as stated above, the ROC may consider initiat=
+ing
+   liquidation proceedings for your company. This would require the
+   appointment of a Qualified Liquidator to execute the necessary procedure=
+s.
+   Our primary goal is to work together to avoid this outcome by ensuring t=
+he
+   timely submission of the required documentation.
+
+
+   - *Outstanding Obligations:* The ROC stipulates the settlement of all
+   outstanding payments related to taxes, EPF/ETF, and any other obligation=
+s,
+   along with the proper closure of all necessary paperwork.
+
+
+   - If you have any questions or concerns about tax payments or related
+   matters, please do not hesitate to reach out to us. Our expert Tax team =
+is
+   available to guide you through the process of closing your Tax
+   Identification Number (TIN) file and addressing any outstanding tax
+   payments. Please note that a separate fee applies for these services.
+
+
+   - For assistance with EPF/ETF, our dedicated Payroll Team is prepared to
+   provide comprehensive information and guidance to ensure a seamless clos=
+ure
+   of your EPF/ETF accounts. Feel free to contact us, and we will direct yo=
+u
+   to our Payroll Team. Similar to the tax services, a separate fee is
+   applicable for these services.
+
+
+   - *Financial Considerations: *Please be aware that the *Secretarial
+   charge for Company Closure is LKR 20,000/-*. Additionally, should there
+   be any additional charges imposed by the ROC during the company closure
+   process, these charges will have to be borne by you.
+
+Please be further advised that* the specified fee of LKR 20,000/-
+exclusively covers only the services provided by us as
+your Company Secretary. It does not include the expenses related to Tax ,
+Payroll or any other related services**. *
+
+Our Company Secretary services include;
+
+   - the preparation of the required closure documents, including any
+   documents requested by your Company auditors to facilitate the provision=
+ of
+   the aforementioned letters/financial statements, within the scope of our
+   services.
+
+We are fully committed to providing you with comprehensive support
+throughout the company closure process, ensuring that all requirements are
+met efficiently and in compliance with the latest guidelines.
+
+   - *Unfortunately, we are unable to offer a specific timeline for the
+   completion of this process at this point. Following the submission of th=
+e
+   necessary documents, the timeline solely depends on the Registrar of
+   Companies (ROC), **making it challenging for us to predict an exact
+   timeframe.*
+
+We know this mail may seem lengthy and overwhelming, but it pretty much
+sums up the entire close down process and costs for you.
+
+Should you have any questions or require further clarification on any
+aspect of the closure process, please do not hesitate to contact us. We are
+here to offer the support and guidance you need to navigate this process
+smoothly.
+
+Thank you for your attention to this matter and we look forward to working
+together to ensure a seamless company closure.
+
+Best Regards,
+
+Nirmani Nallaperuma
+Legal Assistant
+Simplebooks (Pvt) Ltd
+[image: mobilePhone] +94 782 470 152 <+94+782+470+152>
+[image: emailAddress] secretaryteam@simplebooks.com
+<secretary@simplebooks.com>
+[image: website] www.simplebooks.com
+[image: address] 2nd Floor, No.345, Kollupitiya Road, Colombo 03
+
+On Wed, Aug 13, 2025 at 9:27=E2=80=AFAM Operations Team Simplebooks <
+operations@simplebooks.com> wrote:
+
+> Hi Chaminda,
+>
+> I hope you are doing well.
+>
+> With regards to the email, my colleague @Secretary Team from Simplebooks
+> <secretaryteam@simplebooks.com> will assist you further.
+>
+> Please don't hesitate to call me or email me if you have any questions.
+>
+> Cheers,
+> *Elisha *
+> *Gunasekara*
+> Operations
+> *Team*
+> Simplebooks (Pvt) Ltd
+>
+> [image: mobilePhone] 011-7555878
+> [image: emailAddress]
+> operations@simplebooks.com
+> [image: website] www.simplebooks.com
+> [image: address] 2nd Floor, Millennium Tower (Kelly Felder Building)
+> No. 345, Galle Road, Colombo 3
+>
+>
+> On Tue, Aug 12, 2025 at 6:39=E2=80=AFPM Chaminda Jeewandara <
+> chaminda.rmv@gmail.com> wrote:
+>
+>> Dear Team,
+>>
+>> I am writing regarding *SARUBIMA ENTERPRISE (PRIVATE) LIMITED*, of which
+>> I, *Chaminda Jeewandara*, am one of the directors.
+>>
+>> We have recently received a notice requesting payment of taxes for the
+>> year 2025. However, the company has been inactive and ceased operations =
+for
+>> some time now. As such, we wish to formally close the company.
+>>
+>> Kindly guide us through the necessary process and requirements to procee=
+d
+>> with the closure.
+>>
+>> Thank you for your attention and assistance.
+>>
+>> Best regards,
+>> Chaminda Jeewandara
+>>
+>
+
+--0000000000009ece7b063c4a0ff6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:verdana,=
+sans-serif"><div dir=3D"ltr"><div class=3D"gmail_default"><div style=3D"fon=
+t-family:Arial,Helvetica,sans-serif"><font face=3D"verdana, sans-serif" col=
+or=3D"#000000">Hi Sir/Madam,</font></div><div style=3D"font-family:Arial,He=
+lvetica,sans-serif"><font face=3D"verdana, sans-serif" color=3D"#000000"><b=
+r></font></div><div style=3D"font-family:Arial,Helvetica,sans-serif"><font =
+face=3D"verdana, sans-serif" color=3D"#000000">We hope this=C2=A0email=C2=
+=A0finds you well.</font></div><div style=3D"font-family:Arial,Helvetica,sa=
+ns-serif"><font face=3D"verdana, sans-serif" color=3D"#000000"><br>We would=
+ like to bring to your kind attention the recent developments regarding the=
+=C2=A0Company=C2=A0close-down=C2=A0procedure, as stipulated by the Registra=
+r of Companies. In light of these changes, we want to provide you with a cl=
+ear understanding of the necessary steps to proceed with the=C2=A0Company=
+=C2=A0closure process:</font></div><div style=3D"font-family:Arial,Helvetic=
+a,sans-serif"><span style=3D"font-family:verdana,sans-serif"><font color=3D=
+"#000000"><br></font></span></div><div style=3D"font-family:Arial,Helvetica=
+,sans-serif"><font color=3D"#000000"><span style=3D"font-family:verdana,san=
+s-serif">The=C2=A0</span><span style=3D"font-family:verdana,sans-serif">com=
+pany=C2=A0closure process offers two viable routes - strike off and liquida=
+tion. We,=C2=A0<u>at SimpleBooks, recommend and offer the strike-off option=
+ for your=C2=A0company, provided that there are no assets or liabilities pr=
+esent</u>. To initiate this process, the ROC will conduct an inspection of =
+relevant documents to confirm that your=C2=A0company&#39;s assets and liabi=
+lities stand at zero. They will also verify the operational status of your=
+=C2=A0company.</span><br></font><ul><li style=3D"margin-left:15px"><font fa=
+ce=3D"verdana, sans-serif" color=3D"#000000"><u><b>Required Documents</b>:<=
+/u>=C2=A0To proceed with striking off your=C2=A0Company, specific proof doc=
+uments must be submitted to the ROC, along with the relevant resolutions:</=
+font></li></ul><ul><li style=3D"margin-left:15px"><font face=3D"verdana, sa=
+ns-serif" color=3D"#000000">Financial statements, certified by the=C2=A0Com=
+pany=C2=A0Auditors.=C2=A0</font></li></ul></div><blockquote style=3D"font-f=
+amily:Arial,Helvetica,sans-serif;margin:0px 0px 0px 40px;border:none;paddin=
+g:0px"><blockquote style=3D"margin:0px 0px 0px 40px;border:none;padding:0px=
+"><blockquote style=3D"margin:0px 0px 0px 40px;border:none;padding:0px"><di=
+v><font color=3D"#000000"><u style=3D"font-family:verdana,sans-serif">or in=
+ its absence</u><span style=3D"font-family:verdana,sans-serif">,</span></fo=
+nt></div></blockquote></blockquote></blockquote><div style=3D"font-family:A=
+rial,Helvetica,sans-serif"><ul><li style=3D"margin-left:15px"><font face=3D=
+"verdana, sans-serif" color=3D"#000000">A &quot;No Operation&quot; letter a=
+nd a &quot;Confirmation of Assets and Liabilities&quot; letter, also certif=
+ied by your=C2=A0Company=C2=A0Auditors.</font></li></ul></div><blockquote s=
+tyle=3D"font-family:Arial,Helvetica,sans-serif;margin:0px 0px 0px 40px;bord=
+er:medium;padding:0px"><div><font face=3D"verdana, sans-serif" color=3D"#00=
+0000">(Please note that the ROC may request additional documents, if deemed=
+ necessary, during the closure process.)</font></div></blockquote><div styl=
+e=3D"font-family:Arial,Helvetica,sans-serif"><ul><li style=3D"margin-left:1=
+5px"><font face=3D"verdana, sans-serif" color=3D"#000000"><u><b>ROC Review<=
+/b></u>: Upon submission of the relevant resolutions and proof documents, t=
+he ROC will thoroughly review and assess the documents. If all requested do=
+cuments have been correctly submitted, the ROC will grant permission for yo=
+ur=C2=A0company=C2=A0to proceed with the strike-off option.</font></li></ul=
+><ul><li style=3D"margin-left:15px"><font face=3D"verdana, sans-serif" colo=
+r=3D"#000000"><b><u>Liquidation Consideration</u>:</b>=C2=A0In the event th=
+e requested proof documents are not provided as stated above, the ROC may c=
+onsider initiating liquidation proceedings for your=C2=A0company. This woul=
+d require the appointment of a Qualified Liquidator to execute the necessar=
+y procedures. Our primary goal is to work together to avoid this outcome by=
+ ensuring the timely submission of the required documentation.</font></li><=
+/ul><ul><li style=3D"margin-left:15px"><font face=3D"verdana, sans-serif" c=
+olor=3D"#000000"><u><b>Outstanding Obligations:</b></u>=C2=A0The ROC stipul=
+ates the settlement of all outstanding payments related to taxes, EPF/ETF, =
+and any other obligations, along with the proper closure of all necessary p=
+aperwork.=C2=A0</font></li></ul><ul><li style=3D"margin-left:15px"><font fa=
+ce=3D"verdana, sans-serif" color=3D"#000000">If you have any questions or c=
+oncerns about tax payments or related matters, please do not hesitate to re=
+ach out to us. Our expert Tax team is available to guide you through the pr=
+ocess of=C2=A0closing=C2=A0your Tax Identification Number (TIN) file and ad=
+dressing any outstanding tax payments.=C2=A0Please note that a separate fee=
+ applies for these services.</font></li></ul><ul><li style=3D"margin-left:1=
+5px"><font face=3D"verdana, sans-serif" color=3D"#000000">For assistance wi=
+th EPF/ETF, our dedicated Payroll Team is prepared to provide comprehensive=
+ information and guidance to ensure a seamless closure of your EPF/ETF acco=
+unts. Feel free to contact us, and we will direct you to our Payroll Team.=
+=C2=A0Similar to the tax services, a separate fee is applicable for these s=
+ervices.</font></li></ul></div><div style=3D"font-family:Arial,Helvetica,sa=
+ns-serif"><ul><li style=3D"margin-left:15px"><font face=3D"verdana, sans-se=
+rif" color=3D"#000000"><b><u>Financial Considerations:</u>=C2=A0</b>Please =
+be aware that the=C2=A0<u>Secretarial charge for=C2=A0Company=C2=A0Closure =
+is=C2=A0<b>LKR 20,000/</b>-</u>. Additionally, should there be any addition=
+al charges imposed by the ROC during the=C2=A0company=C2=A0closure process,=
+ these charges will have to be borne by you.</font></li></ul><font face=3D"=
+verdana, sans-serif" color=3D"#000000">Please be further advised that<b><i>=
+=C2=A0<u>the specified fee of LKR 20,000/- exclusively covers only the serv=
+ices provided=C2=A0by us as your=C2=A0Company=C2=A0Secretary. It does not i=
+nclude the expenses related to Tax , Payroll or any other related services<=
+/u></i></b><u><b><i>.=C2=A0</i></b></u></font></div><div style=3D"font-fami=
+ly:Arial,Helvetica,sans-serif"><font face=3D"verdana, sans-serif" color=3D"=
+#000000"><br></font></div><div style=3D"font-family:Arial,Helvetica,sans-se=
+rif"><font face=3D"verdana, sans-serif" color=3D"#000000">Our=C2=A0Company=
+=C2=A0Secretary services include;</font></div><div style=3D"font-family:Ari=
+al,Helvetica,sans-serif"><ul><li style=3D"margin-left:15px"><span style=3D"=
+font-family:verdana,sans-serif"><font color=3D"#000000">the preparation of =
+the required closure documents, including any documents requested by your=
+=C2=A0Company=C2=A0auditors to facilitate the provision of the aforemention=
+ed letters/financial statements, within the scope of our services.</font></=
+span></li></ul></div><div style=3D"font-family:Arial,Helvetica,sans-serif">=
+<font color=3D"#000000"><font face=3D"verdana, sans-serif">We are fully com=
+mitted to providing you with comprehensive support throughout the=C2=A0comp=
+any=C2=A0closure process, ensuring that all requirements are met efficientl=
+y and in compliance with the latest guidelines.</font><font face=3D"verdana=
+, sans-serif"><br><ul><li style=3D"margin-left:15px"><font face=3D"verdana,=
+ sans-serif"><b><i><u>Unfortunately, we are unable to offer a specific time=
+line for the completion of this process at this point. Following the submis=
+sion of the necessary documents, the=C2=A0timeline solely depends on the Re=
+gistrar of Companies (ROC),=C2=A0</u></i></b></font><b><i><u>making it chal=
+lenging for us to predict an exact timeframe.</u></i></b></li></ul></font><=
+/font></div><div style=3D"font-family:Arial,Helvetica,sans-serif"><font col=
+or=3D"#000000"><span style=3D"font-family:verdana,sans-serif">We</span><spa=
+n style=3D"font-family:verdana,sans-serif">=C2=A0</span><span style=3D"font=
+-family:verdana,sans-serif">know</span><span style=3D"font-family:verdana,s=
+ans-serif">=C2=A0this=C2=A0mail=C2=A0may seem=C2=A0</span><span style=3D"fo=
+nt-family:verdana,sans-serif">lengthy</span><span style=3D"font-family:verd=
+ana,sans-serif">=C2=A0and=C2=A0</span><span style=3D"font-family:verdana,sa=
+ns-serif">overwhelming</span><span style=3D"font-family:verdana,sans-serif"=
+>, but it pretty much sums up the entire=C2=A0close=C2=A0down=C2=A0process =
+and costs for you.</span>=C2=A0=C2=A0</font></div><div style=3D"font-family=
+:Arial,Helvetica,sans-serif"><font face=3D"verdana, sans-serif" color=3D"#0=
+00000"><br></font></div><div style=3D"font-family:Arial,Helvetica,sans-seri=
+f"><font face=3D"verdana, sans-serif" color=3D"#000000">Should you have any=
+ questions or require further clarification on any aspect of the closure pr=
+ocess, please do not hesitate to contact us. We are here to offer the suppo=
+rt and guidance you need to navigate this process smoothly.<br><br>Thank yo=
+u for your attention to this matter=C2=A0and we look forward to working tog=
+ether to ensure a seamless=C2=A0company=C2=A0closure.</font></div><div styl=
+e=3D"font-family:Arial,Helvetica,sans-serif"><font face=3D"verdana, sans-se=
+rif" color=3D"#000000"><br></font></div><div style=3D"font-family:Arial,Hel=
+vetica,sans-serif"><font face=3D"verdana, sans-serif" color=3D"#000000">Bes=
+t Regards,</font></div></div></div></div><div><br clear=3D"all"></div><div>=
+<div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signatur=
+e"><div dir=3D"ltr"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"col=
+or:rgb(255,255,255);font-family:Arial;border-collapse:collapse;border-spaci=
+ng:0px;width:515.031px;vertical-align:-webkit-baseline-middle"><tbody><tr><=
+td style=3D"padding:0px;border:0px"><h2 color=3D"#000000" style=3D"font-siz=
+e:16px;line-height:1.38;margin:0px;color:rgb(0,0,0)">Nirmani Nallaperuma</h=
+2><div><font color=3D"#000000"><span style=3D"font-size:12px">Legal Assista=
+nt</span></font></div><div><span style=3D"color:rgb(0,0,0);font-size:12px">=
+Simplebooks (Pvt) Ltd</span><br></div></td><td width=3D"15" style=3D"paddin=
+g:0px;border:0px"><div></div></td><td color=3D"#080A3C" width=3D"1" height=
+=3D"auto" style=3D"padding:0px;border-top:0px;border-right:0px;border-botto=
+m:none;border-left:1px solid rgb(8,10,60);width:1px"></td><td width=3D"15" =
+style=3D"padding:0px;border:0px"><div></div></td><td style=3D"padding:0px;b=
+order:0px"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-colla=
+pse:collapse;border-spacing:0px;width:359.521px;vertical-align:-webkit-base=
+line-middle"><tbody><tr height=3D"25" style=3D"margin:0px;padding:0px;borde=
+r:0px;vertical-align:middle"><td width=3D"30" style=3D"padding:0px;border:0=
+px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"border-collapse:collapse;border-spacing:0px;width:30px;vertical-align:-=
+webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:0px;border:0=
+px"><td style=3D"padding:0px;border:0px;vertical-align:bottom"><span color=
+=3D"#080A3C" width=3D"11" style=3D"display:inline-block;background-color:rg=
+b(8,10,60)"><img src=3D"https://cdn2.hubspot.net/hubfs/53/tools/email-signa=
+ture-generator/icons/phone-icon-2x.png" color=3D"#080A3C" alt=3D"mobilePhon=
+e" width=3D"13" style=3D"border-style:none;display:block"></span></td></tr>=
+</tbody></table></td><td style=3D"padding:0px;border:0px;color:rgb(0,0,0)">=
+<a href=3D"tel:+94+782+470+152" color=3D"#000000" style=3D"color:rgb(0,0,0)=
+;background-color:rgba(0,0,0,0);font-size:12px" target=3D"_blank">+94 782 4=
+70 152</a><br></td></tr><tr height=3D"25" style=3D"margin:0px;padding:0px;b=
+order:0px;vertical-align:middle"><td width=3D"30" style=3D"padding:0px;bord=
+er:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"border-collapse:collapse;border-spacing:0px;width:30px;vertical-alig=
+n:-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:0px;borde=
+r:0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom"><span col=
+or=3D"#080A3C" width=3D"11" style=3D"display:inline-block;background-color:=
+rgb(8,10,60)"><img src=3D"https://cdn2.hubspot.net/hubfs/53/tools/email-sig=
+nature-generator/icons/email-icon-2x.png" color=3D"#080A3C" alt=3D"emailAdd=
+ress" width=3D"13" style=3D"border-style:none;display:block"></span></td></=
+tr></tbody></table></td><td style=3D"padding:0px;border:0px"><a href=3D"mai=
+lto:secretary@simplebooks.com" color=3D"#000000" style=3D"color:rgb(0,0,0);=
+background-color:rgba(0,0,0,0);font-size:12px" target=3D"_blank">secretaryt=
+eam@simplebooks.com</a></td></tr><tr height=3D"25" style=3D"margin:0px;padd=
+ing:0px;border:0px;vertical-align:middle"><td width=3D"30" style=3D"padding=
+:0px;border:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;width:30px;vert=
+ical-align:-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:=
+0px;border:0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom">=
+<span color=3D"#080A3C" width=3D"11" style=3D"display:inline-block;backgrou=
+nd-color:rgb(8,10,60)"><img src=3D"https://cdn2.hubspot.net/hubfs/53/tools/=
+email-signature-generator/icons/link-icon-2x.png" color=3D"#080A3C" alt=3D"=
+website" width=3D"13" style=3D"border-style:none;display:block"></span></td=
+></tr></tbody></table></td><td style=3D"padding:0px;border:0px"><a href=3D"=
+https://www.simplebooks.com/" color=3D"#000000" style=3D"color:rgb(0,0,0);b=
+ackground-color:rgba(0,0,0,0);font-size:12px" target=3D"_blank">www.simpleb=
+ooks.com</a></td></tr><tr height=3D"25" style=3D"margin:0px;padding:0px;bor=
+der:0px;vertical-align:middle"><td width=3D"30" style=3D"padding:0px;border=
+:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"border-collapse:collapse;border-spacing:0px;width:30px;vertical-align:=
+-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:0px;border:=
+0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom"><span color=
+=3D"#080A3C" width=3D"11" style=3D"display:inline-block;background-color:rg=
+b(8,10,60)"><img src=3D"https://cdn2.hubspot.net/hubfs/53/tools/email-signa=
+ture-generator/icons/address-icon-2x.png" color=3D"#080A3C" alt=3D"address"=
+ width=3D"13" style=3D"border-style:none;display:block"></span></td></tr></=
+tbody></table></td><td style=3D"padding:0px;border:0px"><span style=3D"colo=
+r:rgb(0,0,0);font-family:arial,sans-serif;font-size:12px">2nd Floor, No.345=
+, Kollupitiya Road, Colombo 03</span></td></tr></tbody></table></td></tr></=
+tbody></table></div></div></div></div><br><div class=3D"gmail_quote gmail_q=
+uote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 13, 2025 =
+at 9:27=E2=80=AFAM Operations Team Simplebooks &lt;<a href=3D"mailto:operat=
+ions@simplebooks.com">operations@simplebooks.com</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div><div =
+class=3D"gmail_default"><font face=3D"arial, sans-serif">Hi=C2=A0Chaminda,<=
+br><br>I hope you are doing well.<br><br>With regards to the email, my coll=
+eague=C2=A0</font><a class=3D"gmail_plusreply" id=3D"m_7968122114959992104p=
+lusReplyChip-1" href=3D"mailto:secretaryteam@simplebooks.com" target=3D"_bl=
+ank">@Secretary Team from Simplebooks</a><font face=3D"arial, sans-serif">=
+=C2=A0will assist you further.</font></div><font face=3D"arial, sans-serif"=
+><br clear=3D"all"></font></div><div><div dir=3D"ltr" class=3D"gmail_signat=
+ure"><div dir=3D"ltr"><div><div style=3D"color:rgb(34,34,34)"><font face=3D=
+"arial, sans-serif">Please don&#39;t hesitate to call me or email me if you=
+ have any questions.</font></div></div><div><span style=3D"color:rgb(34,34,=
+34)"><font face=3D"arial, sans-serif"><br></font></span></div><span style=
+=3D"color:rgb(34,34,34)"><font face=3D"arial, sans-serif">Cheers,</font></s=
+pan><div><div><font color=3D"#222222" face=3D"tahoma, sans-serif"><b>Elisha=
+=C2=A0</b></font></div><div><font color=3D"#222222" face=3D"tahoma, sans-se=
+rif"><b>Gunasekara</b></font></div><div><table cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;width:515.031p=
+x;color:rgb(255,255,255);vertical-align:-webkit-baseline-middle;font-family=
+:Arial"><tbody><tr style=3D"margin:0px;padding:0px;border:0px"><td style=3D=
+"padding:0px;border:0px;vertical-align:middle"><table cellpadding=3D"0" cel=
+lspacing=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;width:5=
+15.031px;vertical-align:-webkit-baseline-middle"><tbody><tr style=3D"margin=
+:0px;padding:0px;border:0px"><td style=3D"padding:0px;border:0px"><h2 color=
+=3D"#000000" style=3D"line-height:1.38;margin:0px;color:rgb(0,0,0)"><font s=
+ize=3D"2" face=3D"tahoma, sans-serif">Operations</font></h2><div><font colo=
+r=3D"#000000" face=3D"tahoma, sans-serif"><b>Team</b></font></div><div><spa=
+n style=3D"color:rgb(0,0,0)"><font face=3D"tahoma, sans-serif">Simplebooks =
+(Pvt) Ltd</font></span></div></td><td width=3D"15" style=3D"padding:0px;bor=
+der:0px"><div></div></td><td color=3D"#080A3C" width=3D"1" height=3D"auto" =
+style=3D"padding:0px;border-top:0px;border-right:0px;border-bottom:none;bor=
+der-left:1px solid rgb(8,10,60);width:1px"><font face=3D"tahoma, sans-serif=
+">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0</font></td><td width=3D"1=
+5" style=3D"padding:0px;border:0px"><div></div></td><td style=3D"padding:0p=
+x;border:0px"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-co=
+llapse:collapse;border-spacing:0px;width:359.521px;vertical-align:-webkit-b=
+aseline-middle"><tbody><tr height=3D"25" style=3D"margin:0px;padding:0px;bo=
+rder:0px;vertical-align:middle"><td width=3D"30" style=3D"padding:0px;borde=
+r:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=3D"0" sty=
+le=3D"border-collapse:collapse;border-spacing:0px;width:30px;vertical-align=
+:-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:0px;border=
+:0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom"><span colo=
+r=3D"#080A3C" width=3D"11" style=3D"display:inline-block;background-color:r=
+gb(8,10,60)"><font face=3D"tahoma, sans-serif"><img src=3D"https://cdn2.hub=
+spot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png" =
+color=3D"#080A3C" alt=3D"mobilePhone" width=3D"13" style=3D"border-style: n=
+one; display: block;"></font></span></td></tr></tbody></table></td><td styl=
+e=3D"padding:0px;border:0px;color:rgb(0,0,0)"><font face=3D"tahoma, sans-se=
+rif">011-7555878</font></td></tr><tr height=3D"25" style=3D"margin:0px;padd=
+ing:0px;border:0px;vertical-align:middle"><td width=3D"30" style=3D"padding=
+:0px;border:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;width:30px;vert=
+ical-align:-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:=
+0px;border:0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom">=
+<span color=3D"#080A3C" width=3D"11" style=3D"display:inline-block;backgrou=
+nd-color:rgb(8,10,60)"><font face=3D"tahoma, sans-serif"><img src=3D"https:=
+//cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-ico=
+n-2x.png" color=3D"#080A3C" alt=3D"emailAddress" width=3D"13" style=3D"bord=
+er-style: none; display: block;"></font></span></td></tr></tbody></table></=
+td><td style=3D"padding:0px;border:0px"><table cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;width:362.859p=
+x;vertical-align:-webkit-baseline-middle"><tbody><tr height=3D"25" style=3D=
+"margin:0px;padding:0px;border:0px;vertical-align:middle"><td style=3D"padd=
+ing:0px;border:0px"><a href=3D"mailto:operations@simplebooks.com" color=3D"=
+#000000" style=3D"color:rgb(0,0,0);background-color:rgba(0,0,0,0)" target=
+=3D"_blank"><font face=3D"tahoma, sans-serif">operations@simplebooks.com</f=
+ont></a></td></tr></tbody></table></td></tr><tr height=3D"25" style=3D"marg=
+in:0px;padding:0px;border:0px;vertical-align:middle"><td width=3D"30" style=
+=3D"padding:0px;border:0px;vertical-align:middle"><table cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;widt=
+h:30px;vertical-align:-webkit-baseline-middle"><tbody><tr style=3D"margin:0=
+px;padding:0px;border:0px"><td style=3D"padding:0px;border:0px;vertical-ali=
+gn:bottom"><span color=3D"#080A3C" width=3D"11" style=3D"display:inline-blo=
+ck;background-color:rgb(8,10,60)"><font face=3D"tahoma, sans-serif"><img sr=
+c=3D"https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icon=
+s/link-icon-2x.png" color=3D"#080A3C" alt=3D"website" width=3D"13" style=3D=
+"border-style: none; display: block;"></font></span></td></tr></tbody></tab=
+le></td><td style=3D"padding:0px;border:0px"><a href=3D"https://www.simpleb=
+ooks.com/" color=3D"#000000" style=3D"color:rgb(0,0,0);background-color:rgb=
+a(0,0,0,0)" target=3D"_blank"><font face=3D"tahoma, sans-serif">www.simpleb=
+ooks.com</font></a></td></tr><tr height=3D"25" style=3D"margin:0px;padding:=
+0px;border:0px;vertical-align:middle"><td width=3D"30" style=3D"padding:0px=
+;border:0px;vertical-align:middle"><table cellpadding=3D"0" cellspacing=3D"=
+0" style=3D"border-collapse:collapse;border-spacing:0px;width:30px;vertical=
+-align:-webkit-baseline-middle"><tbody><tr style=3D"margin:0px;padding:0px;=
+border:0px"><td style=3D"padding:0px;border:0px;vertical-align:bottom"><spa=
+n color=3D"#080A3C" width=3D"11" style=3D"display:inline-block;background-c=
+olor:rgb(8,10,60)"><font face=3D"tahoma, sans-serif"><img src=3D"https://cd=
+n2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-=
+2x.png" color=3D"#080A3C" alt=3D"address" width=3D"13" style=3D"border-styl=
+e: none; display: block;"></font></span></td></tr></tbody></table></td><td =
+style=3D"padding:0px;border:0px"><font color=3D"#000000"><font face=3D"geor=
+gia, serif">2nd Floor, Millennium Tower (Kelly Felder Building)<br>No. 345,=
+ Galle Road, Colombo 3</font><br></font></td></tr></tbody></table></td></tr=
+></tbody></table></td></tr><tr style=3D"margin:0px;padding:0px;border:0px">=
+<td height=3D"30" style=3D"padding:0px;border:0px"></td></tr><tr style=3D"m=
+argin:0px;padding:0px;border:0px"><td color=3D"#080A3C" width=3D"auto" heig=
+ht=3D"1" style=3D"padding:0px;border-top:0px;border-right:0px;border-bottom=
+:1px solid rgb(8,10,60);border-left:none;width:515.031px;display:block"></t=
+d></tr><tr style=3D"margin:0px;padding:0px;border:0px"><td height=3D"30" st=
+yle=3D"padding:0px;border:0px"></td></tr><tr style=3D"margin:0px;padding:0p=
+x;border:0px"><td style=3D"padding:0px;border:0px"><table cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;wid=
+th:515.031px;vertical-align:-webkit-baseline-middle"><tbody><tr style=3D"ma=
+rgin:0px;padding:0px;border:0px"><td style=3D"padding:0px;border:0px;vertic=
+al-align:top"><img width=3D"130" src=3D"https://ci3.googleusercontent.com/m=
+ail-sig/AIorK4x_0J6_OV6Id33X5e5ghc-LJFEcwERcEGJd34NAUV8gYgQZgGU3ZMaSoqPg1kp=
+uzmIbQJo95yw" style=3D"border-style: none; display: block; max-width: 130px=
+;"></td></tr></tbody></table></td></tr></tbody></table></div></div></div></=
+div></div><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Tue, Aug 12, 2025 at 6:39=E2=80=AFPM Chaminda Jeewandara=
+ &lt;<a href=3D"mailto:chaminda.rmv@gmail.com" target=3D"_blank">chaminda.r=
+mv@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex"><div dir=3D"ltr"><p>Dear Team,</p>
+<p>I am writing regarding <em>SARUBIMA ENTERPRISE (PRIVATE) LIMITED</em>, o=
+f which I, <strong>Chaminda Jeewandara</strong>, am one of the directors.</=
+p>
+<p>We have recently received a notice requesting payment of taxes for the y=
+ear 2025. However, the company has been inactive and ceased operations for =
+some time now. As such, we wish to formally close the company.</p>
+<p>Kindly guide us through the necessary process and requirements to procee=
+d with the closure.</p>
+<p>Thank you for your attention and assistance.</p>
+<p>Best regards,<br>
+Chaminda Jeewandara</p></div>
+</blockquote></div>
+</blockquote></div>
+
+--0000000000009ece7b063c4a0ff6--
