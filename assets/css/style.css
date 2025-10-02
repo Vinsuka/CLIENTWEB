@@ -655,6 +655,7 @@ button {
   box-shadow: var(--shadow-light);
   transition: var(--transition);
   aspect-ratio: 1;
+  cursor: pointer;
 }
 
 .team__photo:hover {
@@ -671,10 +672,6 @@ button {
 
 .team__photo:hover .team__img {
   transform: scale(1.05);
-}
-
-.team__photo {
-  cursor: pointer;
 }
 
 /* ===== Lightbox Modal ===== */
@@ -1224,12 +1221,13 @@ button {
   }
   
   .team__photo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
     overflow: hidden;
     margin: 0 auto 1rem;
-    border: 3px solid var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    box-shadow: var(--shadow-light);
   }
   
   .contact__content {
@@ -1341,8 +1339,9 @@ button {
   }
   
   .team__photo {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
     border-width: 2px;
   }
   
