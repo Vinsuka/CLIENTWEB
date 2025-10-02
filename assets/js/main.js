@@ -16,19 +16,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav__link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
         });
-    });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 
     // ===== Smooth Scrolling for Anchor Links =====
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -266,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollToTopButton = document.createElement('button');
     scrollToTopButton.innerHTML = '↑';
     scrollToTopButton.className = 'scroll-to-top';
+    scrollToTopButton.setAttribute('aria-label', 'Scroll to top');
     scrollToTopButton.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -284,7 +307,22 @@ document.addEventListener('DOMContentLoaded', function() {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
+        min-height: 44px;
+        min-width: 44px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     `;
+    
+    // Mobile-specific styles
+    if (window.innerWidth <= 768) {
+        scrollToTopButton.style.cssText += `
+            bottom: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+        `;
+    }
     
     document.body.appendChild(scrollToTopButton);
     
@@ -321,6 +359,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ===== Mobile Touch Interactions =====
+    if ('ontouchstart' in window) {
+        // Add touch feedback to interactive elements
+        const touchElements = document.querySelectorAll('.btn, .service__card, .project__card, .strength__card, .team__photo');
+        
+        touchElements.forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Improve touch scrolling
+        document.body.style.webkitOverflowScrolling = 'touch';
+    }
+    
+    // ===== Mobile Viewport Height Fix =====
+    function setViewportHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
+    
+    // ===== Mobile Performance Optimizations =====
+    if (window.innerWidth <= 768) {
+        // Reduce animation complexity on mobile
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                * {
+                    animation-duration: 0.3s !important;
+                    transition-duration: 0.3s !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // ===== Initialize everything =====
     console.log('Topcon website initialized successfully!');

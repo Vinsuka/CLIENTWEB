@@ -131,6 +131,7 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
+  position: relative;
 }
 
 .nav__logo-img {
@@ -190,6 +191,13 @@ button {
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav__toggle:hover {
+  background: var(--light-gray);
 }
 
 .nav__toggle-line {
@@ -197,6 +205,7 @@ button {
   height: 3px;
   background: var(--deep-navy);
   transition: var(--transition);
+  border-radius: 2px;
 }
 
 /* ===== Hero Section ===== */
@@ -959,37 +968,66 @@ button {
 @media (max-width: 768px) {
   .nav__menu {
     position: fixed;
-    top: 100%;
-    left: 0;
+    top: 0;
+    left: -100%;
     width: 100%;
+    height: 100vh;
     background: var(--white);
-    padding: 2rem;
-    box-shadow: var(--shadow-medium);
-    transition: var(--transition);
+    padding: 0;
+    box-shadow: var(--shadow-heavy);
+    transition: left 0.3s ease;
     z-index: 999;
+    overflow-y: auto;
   }
   
   .nav__menu.active {
-    top: 100%;
+    left: 0;
   }
   
   .nav__list {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0;
+    padding: 80px 0 2rem;
+    height: 100%;
+  }
+  
+  .nav__item {
+    width: 100%;
+    border-bottom: 1px solid var(--card-border);
   }
   
   .nav__link {
-    font-size: 1.1rem;
-    padding: 0.75rem 0;
+    font-size: 1.2rem;
+    padding: 1.5rem 2rem;
+    display: block;
+    width: 100%;
+    color: var(--text-dark);
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+  }
+  
+  .nav__link:hover,
+  .nav__link.active {
+    color: var(--primary-blue);
+    background: var(--light-gray);
+    border-left-color: var(--primary-blue);
   }
   
   .nav__cta {
-    margin-top: 1rem;
+    margin: 2rem;
     text-align: center;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    display: block;
+    width: calc(100% - 4rem);
   }
   
   .nav__toggle {
     display: flex;
+    z-index: 1001;
   }
   
   .nav__toggle.active .nav__toggle-line:nth-child(1) {
@@ -1004,38 +1042,87 @@ button {
     transform: rotate(-45deg) translate(7px, -6px);
   }
   
+  /* Mobile overlay */
+  .nav__menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  
+  .nav__menu.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  
   .hero {
-    padding: 100px 0 60px;
-    min-height: 90vh;
+    padding: 80px 0 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
   }
   
   .hero__title {
-    font-size: 2rem;
-    line-height: 1.3;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
   
   .hero__subtitle {
     font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
   
   .section__title {
     font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
   
   .section__subtitle {
     font-size: 1rem;
+    line-height: 1.6;
   }
   
   .hero__cta {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 2rem;
   }
   
   .btn {
     width: 100%;
-    max-width: 280px;
-    padding: 1rem 1.5rem;
+    max-width: 300px;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    min-height: 50px;
+  }
+  
+  .hero__features {
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero__feature {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
   }
   
   .services__grid {
@@ -1045,15 +1132,40 @@ button {
   
   .service__card {
     padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+  }
+  
+  .service__card:active {
+    transform: scale(0.98);
   }
   
   .strengths__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
   }
   
   .strength__card {
     padding: 1.5rem 1rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+  }
+  
+  .strength__number {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .strength__title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .strength__description {
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
   
   .projects__grid {
@@ -1061,20 +1173,49 @@ button {
     gap: 1.5rem;
   }
   
+  .project__card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+  }
+  
+  .project__card:active {
+    transform: scale(0.98);
+  }
+  
   .projects__filter {
     gap: 0.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 2rem;
   }
   
   .filter__btn {
-    padding: 0.75rem 1rem;
+    padding: 0.8rem 1.2rem;
     font-size: 0.9rem;
     min-width: 100px;
+    border-radius: 25px;
+    background: var(--white);
+    border: 2px solid var(--card-border);
+    transition: var(--transition);
+  }
+  
+  .filter__btn.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
   }
   
   .directors__grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .director__card {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
   }
   
   .team__grid {
@@ -1082,12 +1223,23 @@ button {
     gap: 1rem;
   }
   
+  .team__photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--primary-blue);
+  }
+  
   .contact__content {
     gap: 2rem;
   }
   
   .contact__form-container {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
   }
   
   .contact__cta {
@@ -1097,13 +1249,21 @@ button {
   }
   
   .clients__carousel {
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 1rem 0;
   }
   
   .client__img {
-    height: 50px;
+    height: 45px;
+    opacity: 0.7;
+    transition: var(--transition);
+  }
+  
+  .client__logo:active .client__img {
+    opacity: 1;
+    transform: scale(1.1);
   }
 }
 
@@ -1113,42 +1273,49 @@ button {
   }
   
   .section {
-    padding: 50px 0;
+    padding: 40px 0;
   }
   
   .hero {
-    padding: 80px 0 50px;
-    min-height: 85vh;
+    padding: 70px 0 40px;
+    min-height: 100vh;
   }
   
   .hero__title {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
     line-height: 1.2;
+    margin-bottom: 1rem;
   }
   
   .hero__subtitle {
     font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
   }
   
   .section__title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
   }
   
   .section__subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
   
   .btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
+    min-height: 48px;
   }
   
   .service__card,
   .strength__card,
   .director__card {
     padding: 1.5rem 1rem;
+    border-radius: 10px;
   }
   
   .strengths__grid {
@@ -1157,7 +1324,15 @@ button {
   }
   
   .strength__number {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .strength__title {
+    font-size: 0.95rem;
+  }
+  
+  .strength__description {
+    font-size: 0.8rem;
   }
   
   .team__grid {
@@ -1168,50 +1343,107 @@ button {
   .team__photo {
     width: 60px;
     height: 60px;
+    border-width: 2px;
   }
   
   .contact__form-container {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
   }
   
   .form__input,
   .form__select,
   .form__textarea {
     font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+  }
+  
+  .form__label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
   }
   
   .lightbox__close {
-    top: -30px;
-    right: -10px;
-    font-size: 30px;
-    width: 30px;
-    height: 30px;
+    top: -35px;
+    right: -5px;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
   }
   
   .lightbox__content {
     max-width: 95%;
-    max-height: 95%;
+    max-height: 90%;
+    border-radius: 8px;
   }
   
   .nav__logo-img {
     height: 45px;
   }
   
+  .nav__link {
+    font-size: 1.1rem;
+    padding: 1.25rem 1.5rem;
+  }
+  
   .hero__features {
     gap: 0.5rem;
+    margin-top: 1.5rem;
   }
   
   .hero__feature {
     font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 15px;
   }
   
   .project__card {
     margin-bottom: 1rem;
+    border-radius: 10px;
   }
   
   .project__image {
-    height: 180px;
+    height: 160px;
+  }
+  
+  .project__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .project__details {
+    font-size: 0.85rem;
+  }
+  
+  .filter__btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    min-width: 80px;
+    border-radius: 20px;
+  }
+  
+  .clients__carousel {
+    gap: 1rem;
+  }
+  
+  .client__img {
+    height: 40px;
+  }
+  
+  .footer__content {
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer__section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer__section p,
+  .footer__section a {
+    font-size: 0.9rem;
   }
 }
 
